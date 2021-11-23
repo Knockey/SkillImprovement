@@ -20,7 +20,7 @@ namespace Task_1
         public int TryGetFireDamage()
         {
             if (IsNotAbleToShoot())
-                throw new ArgumentOutOfRangeException(_bulletsInClip.ToString(), _bulletsInClip, "Not enough bullets!");
+                throw new ArgumentOutOfRangeException(nameof(_bulletsInClip), _bulletsInClip, "Not enough bullets!");
 
             _bulletsInClip--;
             
