@@ -8,7 +8,7 @@ namespace Task_1
 
         public Enemy(Weapon weapon)
         {
-            _weapon = weapon;
+            _weapon = weapon ?? throw new NullReferenceException(nameof(weapon));
         }
 
         public void OnSeeEnemy(Player player)
