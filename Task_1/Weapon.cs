@@ -4,37 +4,36 @@ namespace Task_1
 {
     public class Weapon
     {
-        private readonly int _damage;
-        private readonly int _bulletsInClipDefault;
+        private readonly int _defaultAmountOfBullets;
+        private int _currentAmountOfBullets;
 
-        private int _bulletsInClip;
+        public int Damage { get; init; }
 
-        public Weapon(int damage, int bulletsInClipDefault)
+        public Weapon(int damage, int defaultAmountOfBullets)
         {
-            _damage = damage;
-            _bulletsInClipDefault = bulletsInClipDefault;
+            if (damage <= 0)
+                throw new ArgumentOutOfRangeException(nameof(damage), damage, "Damage can't be less, than 1!");
 
-            _bulletsInClip = bulletsInClipDefault;
+            if (defaultAmountOfBullets <= 0)
+                throw new ArgumentOutOfRangeException(nameof(defaultAmountOfBullets), defaultAmountOfBullets, "Default amount of bullets can't be less, than 1!");
+
+            Damage = damage;
+            _defaultAmountOfBullets = defaultAmountOfBullets;
+            _currentAmountOfBullets = defaultAmountOfBullets;
         }
 
-        public int TryGetFireDamage()
+        public void TryShoot(Player player)
         {
-            if (IsNotAbleToShoot())
-                throw new ArgumentOutOfRangeException(nameof(_bulletsInClip), _bulletsInClip, "Not enough bullets!");
+            if (IsNotEnoughBulletsToShoot())
+                throw new ArgumentOutOfRangeException(nameof(_currentAmountOfBullets), _currentAmountOfBullets, "Not enough bullets");
 
-            _bulletsInClip--;
-            
-            return _damage;
+            --_currentAmountOfBullets;
+            player.TryApplyDamage(this);
         }
 
-        public void Reload()
+        private bool IsNotEnoughBulletsToShoot()
         {
-            _bulletsInClip = _bulletsInClipDefault;
-        }
-
-        private bool IsNotAbleToShoot()
-        {
-            return _bulletsInClip-- <= 0;
+            return --_currentAmountOfBullets <= 0;
         }
     }
 }

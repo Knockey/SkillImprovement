@@ -11,8 +11,6 @@ namespace Task_1
 
         public bool IsDead => HealthValue <= 0;
 
-        public bool IsAlive => HealthValue > 0;
-
         public Player(int healthValueDefault)
         {
             if (healthValueDefault <= 0)
@@ -22,15 +20,15 @@ namespace Task_1
             HealthValue = healthValueDefault;
         }
 
-        public void TryApplyDamage(int damage)
+        public void TryApplyDamage(Weapon weapon)
         {
             if (IsDead)
                 throw new ArgumentOutOfRangeException(nameof(IsDead), IsDead, "Can't shoot dead!");
 
-            if (damage < 0)
-                throw new ArgumentOutOfRangeException(nameof(damage), damage, "Can't dealt damage below zero!");
+            if (weapon.Damage < 0)
+                throw new ArgumentOutOfRangeException(nameof(weapon.Damage), weapon.Damage, "Can't dealt damage below zero!");
 
-            HealthValue = HealthValue - damage < 0 ? 0 : HealthValue - damage;
+            HealthValue = HealthValue - weapon.Damage < 0 ? 0 : HealthValue - weapon.Damage;
         }
     }
 }
