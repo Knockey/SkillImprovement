@@ -7,8 +7,6 @@ namespace Task_1
         private readonly int _defaultAmountOfBullets;
         private int _currentAmountOfBullets;
 
-        public int Damage { get; init; }
-
         public Weapon(int damage, int defaultAmountOfBullets)
         {
             if (damage <= 0)
@@ -22,6 +20,8 @@ namespace Task_1
             _currentAmountOfBullets = defaultAmountOfBullets;
         }
 
+        public int Damage { get; init; }
+
         public void TryShoot(Player player)
         {
             if (IsNotEnoughBulletsToShoot())
@@ -31,9 +31,6 @@ namespace Task_1
             player.TryApplyDamage(this);
         }
 
-        private bool IsNotEnoughBulletsToShoot()
-        {
-            return --_currentAmountOfBullets <= 0;
-        }
+        private bool IsNotEnoughBulletsToShoot() => --_currentAmountOfBullets <= 0;
     }
 }

@@ -7,10 +7,6 @@ namespace Task_1
     {
         private readonly int _healthValueDefault;
 
-        public int HealthValue { get; private set; }
-
-        public bool IsDead => HealthValue <= 0;
-
         public Player(int healthValueDefault)
         {
             if (healthValueDefault <= 0)
@@ -19,6 +15,10 @@ namespace Task_1
             _healthValueDefault = healthValueDefault;
             HealthValue = healthValueDefault;
         }
+
+        public int HealthValue { get; private set; }
+
+        public bool IsDead => HealthValue <= 0;
 
         public void TryApplyDamage(Weapon weapon)
         {
