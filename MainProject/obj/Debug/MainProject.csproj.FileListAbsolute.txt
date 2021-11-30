@@ -1,0 +1,2 @@
+C:\Users\borat\source\repos\Knockey\SkillImprovement\MainProject\obj\Debug\MainProject.csproj.AssemblyReference.cache
+C:\Users\borat\source\repos\Knockey\SkillImprovement\MainProject\obj\Debug\MainProject.csproj.CoreCompileInputs.cache
