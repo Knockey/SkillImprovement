@@ -5,10 +5,7 @@ namespace Task_2
 {
     public class GoodCell : IReadOnlyGoodCell
     {
-        public Good Good { get; init; }
-        public int Count { get; private set; }
-
-        public GoodCell (Good good, int count)
+        public GoodCell(Good good, int count)
         {
             if (IsCountLessThanOne(count))
                 throw new ArgumentOutOfRangeException(nameof(count), count, "Count can't be less than 1!");
@@ -16,6 +13,10 @@ namespace Task_2
             Good = good ?? throw new NullReferenceException(nameof(good));
             Count = count;
         }
+
+        public Good Good { get; init; }
+
+        public int Count { get; private set; }
 
         public void Merge(GoodCell cell)
         {

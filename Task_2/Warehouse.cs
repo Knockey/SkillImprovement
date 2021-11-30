@@ -9,14 +9,14 @@ namespace Task_2
 {
     public class Warehouse
     {
-        private List<GoodCell> _goodsList;
-
-        public IReadOnlyList<IReadOnlyGoodCell> GoodsList => _goodsList;
+        private readonly List<GoodCell> _goodsList;
 
         public Warehouse()
         {
             _goodsList = new List<GoodCell>();
         }
+
+        public IReadOnlyList<IReadOnlyGoodCell> GoodsList => _goodsList;
 
         public void ReplenishGoods(Good good, int count)
         {
