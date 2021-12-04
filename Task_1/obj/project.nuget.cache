@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "hYXJTLGnniUSpr36S4VEZtnxXQGFxeRjioZTk3GYTrJ/xbB+ThaDj+gj2l+xxgmd18ZYJhXTChGKTyI33qbr8A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\borat\\source\\repos\\Knockey\\SkillImprovement\\Task_1\\Task_1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\borat\\.nuget\\packages\\stylecop.analyzers\\1.1.118\\stylecop.analyzers.1.1.118.nupkg.sha512"
+  ],
+  "logs": []
+}
