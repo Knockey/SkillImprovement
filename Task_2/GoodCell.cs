@@ -5,28 +5,45 @@ namespace Task_2
 {
     public class GoodCell : IReadOnlyGoodCell
     {
-        public GoodCell(Good good, int count)
+        public GoodCell(Good good, int amount)
         {
-            if (IsCountLessThanOne(count))
-                throw new ArgumentOutOfRangeException(nameof(count), count, "Count can't be less than 1!");
+            if (IsAmountLessThanOne(amount))
+                throw new ArgumentOutOfRangeException(nameof(amount), amount, "Count can't be less than 1!");
 
-            Good = good ?? throw new NullReferenceException(nameof(good));
-            Count = count;
+            Good = good ?? throw new NullReferenceException($"{nameof(good)} can't be null!");
+
+            Amount = amount;
         }
 
         public Good Good { get; init; }
 
-        public int Count { get; private set; }
+        public int Amount { get; private set; }
 
-        public void Merge(GoodCell cell)
+        public GoodCell Merge(GoodCell cell)
         {
             if (cell == null)
                 throw new NullReferenceException(nameof(cell));
 
-            Count += cell.Count;
+            return new GoodCell(Good, Amount += cell.Amount);
         }
 
-        private bool IsCountLessThanOne(int count)
+        public GoodCell ReduceAmount(GoodCell cell)
+        {
+            if (cell == null)
+                throw new NullReferenceException(nameof(cell));
+
+            int newAmount = Amount - cell.Amount;
+
+            if (newAmount < 0)
+                throw new ArgumentOutOfRangeException(nameof(Amount), newAmount, "Not enough goods to reduce amount!");
+
+            if (newAmount == 0)
+                return null;
+
+            return new GoodCell(Good, newAmount);
+        }
+
+        private bool IsAmountLessThanOne(int count)
         {
             return count <= 0;
         }

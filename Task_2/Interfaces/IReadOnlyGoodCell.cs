@@ -4,6 +4,6 @@
     {
         public Good Good { get; }
 
-        public int Count { get; }
+        public int Amount { get; }
     }
 }

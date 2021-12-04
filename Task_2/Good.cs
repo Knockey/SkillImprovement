@@ -7,7 +7,7 @@ namespace Task_2
         public Good(string name)
         {
             if (string.IsNullOrEmpty(name))
-                throw new NullReferenceException(nameof(name));
+                throw new NullReferenceException($"{nameof(name)} can't be null!");
 
             Name = name;
         }
