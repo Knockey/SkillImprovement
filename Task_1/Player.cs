@@ -13,14 +13,14 @@ namespace Task_1
                 throw new ArgumentOutOfRangeException(nameof(healthValueDefault), healthValueDefault, "Default health can't be below 1!");
 
             _healthValueDefault = healthValueDefault;
-            HealthValue = healthValueDefault;
+            Value = healthValueDefault;
         }
 
-        public int HealthValue { get; private set; }
+        public int Value { get; private set; }
 
-        public bool IsDead => HealthValue <= 0;
+        public bool IsDead => Value <= 0;
 
-        public void TryApplyDamage(Weapon weapon)
+        public void ApplyDamage(Weapon weapon)
         {
             if (IsDead)
                 throw new ArgumentOutOfRangeException(nameof(IsDead), IsDead, "Can't shoot dead!");
@@ -28,7 +28,9 @@ namespace Task_1
             if (weapon.Damage < 0)
                 throw new ArgumentOutOfRangeException(nameof(weapon.Damage), weapon.Damage, "Can't dealt damage below zero!");
 
-            HealthValue = HealthValue - weapon.Damage < 0 ? 0 : HealthValue - weapon.Damage;
+            int newHealthValue = Value - weapon.Damage;
+
+            Value = newHealthValue < 0 ? 0 : newHealthValue;
         }
     }
 }

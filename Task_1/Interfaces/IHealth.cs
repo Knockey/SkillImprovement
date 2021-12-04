@@ -2,10 +2,10 @@
 {
     public interface IHealth
     {
-        public int HealthValue { get; }
+        public int Value { get; }
 
         public bool IsDead { get; }
 
-        public void TryApplyDamage(Weapon weapon);
+        public void ApplyDamage(Weapon weapon);
     }
 }
